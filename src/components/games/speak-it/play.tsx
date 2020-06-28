@@ -63,6 +63,7 @@ export default () => {
       recognition.removeEventListener('end', recognition.start);
       recognition.stop();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleModal = () => {
