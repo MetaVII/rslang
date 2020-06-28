@@ -21,6 +21,7 @@
   },
   "plugins": [
     "react",
+    "react-hooks",
     "@typescript-eslint"
   ],
   "settings": {
@@ -61,6 +62,7 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
