@@ -2,16 +2,16 @@ import React from 'react';
 import { Modal } from 'antd';
 
 interface Props {
-    isResultsOpen: boolean,
-    newGame: any,
-    toggleModal: any,
-    correctWords: string[],
-    words: any
+  isResultsOpen: boolean,
+  newGame: any,
+  toggleModal: any,
+  correctWords: string[],
+  words: any
 }
 
 export default ({
   isResultsOpen, newGame, toggleModal, correctWords, words,
-} : Props) => (
+}: Props) => (
   <Modal
     title="Results"
     visible={isResultsOpen}
@@ -23,15 +23,15 @@ export default ({
   >
     <b>Correct words:</b>
     <br />
-    {correctWords.map((word, index) => (
-      <div key={index}>
+    {correctWords.map((word) => (
+      <div key={`speak-it-${word}`}>
         {word}
       </div>
     ))}
     <b>Unspoken:</b>
     <br />
-    {words.filter((word : any) => !correctWords.includes(word.word)).map((word : any, index :any) => (
-      <div key={index}>
+    {words.filter((word: any) => !correctWords.includes(word.word)).map((word: any) => (
+      <div key={`speak-it-${word.word}`}>
         {word.word}
       </div>
     ))}
