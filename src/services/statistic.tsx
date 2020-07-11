@@ -1,4 +1,51 @@
 /* eslint-disable */
+import moment from 'moment';
+
+// used if not provided in createStatistic
+const initialStatistic = {
+  learnedWords: 0,
+  optional: {
+    common:{
+    wordsToday:0,
+    newWordsToday:0,
+    dayProgress:0,
+    lastWord:{},
+    weekDay:moment().format('dddd'),
+    },
+    games:{
+      speakIt:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+      savannah:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+      audioCall:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+      sprint:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+      puzzle:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+      ownGame:{
+        lastPlay:'',
+        words: 0,
+        percentCorrect:0,
+      },
+    }
+  }
+};
 interface UserStatistic{
         learnedWords: number,
         optional: {
@@ -47,7 +94,8 @@ interface UserStatistic{
 
 }
 
-export async function createStatistic(statistic:UserStatistic) {
+export async function createStatistic(statisticObj:UserStatistic) {
+  const statistic = statisticObj || initialStatistic;
   const rawResponse = await fetch(`https://afternoon-falls-25894.herokuapp.com/users/${localStorage.getItem('userId')}/statistics`,
     {
       method: 'PUT',
@@ -73,7 +121,8 @@ export async function getStatistic() {
       Accept: 'application/json',
     },
   });
-  if (settingsFromBack.status !== 200) return { error: 'Failed to get settings' };
+  if (settingsFromBack.status === 404) return { error: 'Statistics not found', status: 404 };
+  if (settingsFromBack.status !== 200) return { error: 'Failed to get statistic' };
   const content = await settingsFromBack.json();
   return content;
 }
