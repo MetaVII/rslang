@@ -1,7 +1,6 @@
 
-If you have a questions with the app, come here:  
-##### telegram: @anzhelika_smirnova 
-#### discord: Jelika#4810
+If you have questions with the app, come here:  
+##### discord: Jelika#4810
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 
